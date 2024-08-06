@@ -1,0 +1,20 @@
+{
+    "name": "frosya-labs/base64uuid-codec",
+    "description": "Shortened version of base64 UUID encoder and decoder",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "FrosyaLabs\\Utils\\Codec\\Base64Uuid\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nanang F. Rozi",
+            "email": "nfrozy@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2"
+    }
+}
