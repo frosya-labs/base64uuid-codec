@@ -14,6 +14,10 @@ class Base64UUIDCodec
      */
     public static function encode(string $uuid): string
     {
+        if ( ! self::isValidUuid($uuid)) {
+            throw new InvalidUUIDFormatException();
+        }
+
         // Return Base64 URL-safe text
         return Base64URLSafeText::make(
             base64_encode(self::uuidToBytes($uuid))
@@ -71,6 +75,16 @@ class Base64UUIDCodec
             substr($hex, 12, 4),
             substr($hex, 16, 4),
             substr($hex, 20)
+        );
+    }
+
+    private static function isValidUuid(string $uuid): bool
+    {
+        $hex = "[0-9a-fA-F]";
+
+        return preg_match(
+            "/^$hex{8}-$hex{4}-$hex{4}-$hex{4}-$hex{12}$/",
+            $uuid
         );
     }
 }
